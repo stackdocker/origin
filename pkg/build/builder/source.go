@@ -42,6 +42,7 @@ func (e gitNotFoundError) Error() string {
 // fetchSource retrieves the inputs defined by the build source into the
 // provided directory, or returns an error if retrieval is not possible.
 func fetchSource(dockerClient DockerClient, dir string, build *api.Build, urlTimeout time.Duration, in io.Reader, gitClient GitClient) (*git.SourceInfo, error) {
+	glog.Infof("[tangfx]: %v", build.Spec.Source.Dockerfile)
 	hasGitSource := false
 
 	// expect to receive input from STDIN

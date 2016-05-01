@@ -57,17 +57,23 @@ func NewDockerBuilder(dockerClient DockerClient, buildsClient client.BuildInterf
 
 // Build executes a Docker build
 func (d *DockerBuilder) Build() error {
+	if d.build.Spec.Source.Git == nil && d.build.Spec.Source.Binary == nil && d.build.Spec.Source.Dockerfile == nil && d.build.Spec.Source.Images == nil {
+		return fmt.Errorf("must provide a value for at least one of source, binary, images, or dockerfile")
+	}
 	var push bool
 	pushTag := d.build.Status.OutputDockerImageReference
 
 	buildDir, err := ioutil.TempDir("", "docker-build")
 	if err != nil {
+		glog.Errorf("could not set up temp dir: %s", err)
 		return err
 	}
 	sourceInfo, err := fetchSource(d.dockerClient, buildDir, d.build, d.urlTimeout, os.Stdin, d.gitClient)
 	if err != nil {
+		glog.V(9).Infof("could not fetch git source: %s", err)
 		return err
 	}
+	glog.V(9).Infof("git source info: %v", sourceInfo)
 	if sourceInfo != nil {
 		updateBuildRevision(d.client, d.build, sourceInfo)
 	}
@@ -81,11 +87,11 @@ func (d *DockerBuilder) Build() error {
 	if d.build.Spec.Output.To == nil || len(d.build.Spec.Output.To.Name) == 0 {
 		d.build.Status.OutputDockerImageReference = d.build.Name
 	} else {
+		pushTag = d.build.Spec.Output.To.Name
 		push = true
 	}
 
 	buildTag := randomBuildTag(d.build.Namespace, d.build.Name)
-
 	if err := d.dockerBuild(buildDir, buildTag, d.build.Spec.Source.Secrets); err != nil {
 		return err
 	}
@@ -95,8 +101,10 @@ func (d *DockerBuilder) Build() error {
 		return err
 	}
 
+	glog.V(7).Infof("build tag > tag: %v, push: %v", pushTag, push)
 	if push {
 		if err := tagImage(d.dockerClient, buildTag, pushTag); err != nil {
+			glog.V(7).Infof("tag image > failed, %s", err)
 			return err
 		}
 	}
@@ -163,7 +171,7 @@ func (d *DockerBuilder) addBuildParameters(dir string) error {
 	} else {
 		dockerfilePath = filepath.Join(contextDirPath, defaultDockerfilePath)
 	}
-
+	glog.V(9).Infof("target Dockerfile: %s", dockerfilePath)
 	f, err := os.Open(dockerfilePath)
 	if err != nil {
 		return err
@@ -174,7 +182,7 @@ func (d *DockerBuilder) addBuildParameters(dir string) error {
 	if err != nil {
 		return err
 	}
-
+	glog.V(9).Infof("docker remote api build node: %+v", node)
 	// Update base image if build strategy specifies the From field.
 	if d.build.Spec.Strategy.DockerStrategy.From != nil && d.build.Spec.Strategy.DockerStrategy.From.Kind == "DockerImage" {
 		// Reduce the name to a minimal canonical form for the daemon
@@ -287,6 +295,7 @@ func (d *DockerBuilder) dockerBuild(dir string, tag string, secrets []api.Secret
 		}
 		noCache = d.build.Spec.Strategy.DockerStrategy.NoCache
 		forcePull = d.build.Spec.Strategy.DockerStrategy.ForcePull
+		glog.V(7).Infof("build opt > tag: %v, NoCache: %v, Pull: %v", tag, noCache, forcePull)
 	}
 	auth, err := d.setupPullSecret()
 	if err != nil {

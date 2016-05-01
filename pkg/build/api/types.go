@@ -35,14 +35,14 @@ const (
 // Build encapsulates the inputs needed to produce a new deployable image, as well as
 // the status of the execution and a reference to the Pod which executed the build.
 type Build struct {
-	unversioned.TypeMeta
-	kapi.ObjectMeta
+	unversioned.TypeMeta `json:",inline"`
+	kapi.ObjectMeta      `json:"metadata,omitempty"`
 
 	// Spec is all the inputs used to execute the build.
-	Spec BuildSpec
+	Spec BuildSpec `json:"spec,omitempty"`
 
 	// Status is the current status of the build.
-	Status BuildStatus
+	Status BuildStatus `json:"status,omitempty"`
 }
 
 // BuildSpec encapsulates all the inputs necessary to represent a build.
@@ -53,17 +53,17 @@ type BuildSpec struct {
 	ServiceAccount string
 
 	// Source describes the SCM in use.
-	Source BuildSource
+	Source BuildSource `json:"source,omitempty"`
 
 	// Revision is the information from the source for a specific repo snapshot.
 	// This is optional.
 	Revision *SourceRevision
 
 	// Strategy defines how to perform a build.
-	Strategy BuildStrategy
+	Strategy BuildStrategy `json:"strategy,omitempty"`
 
 	// Output describes the Docker image the Strategy should produce.
-	Output BuildOutput
+	Output BuildOutput `json:"output,omitempty"`
 
 	// Compute resource requirements to execute the build
 	Resources kapi.ResourceRequirements
@@ -81,7 +81,7 @@ type BuildSpec struct {
 // BuildStatus contains the status of a build
 type BuildStatus struct {
 	// Phase is the point in the build lifecycle.
-	Phase BuildPhase
+	Phase BuildPhase `json:"phase,omitempty"`
 
 	// Cancelled describes if a cancel event was triggered for the build.
 	Cancelled bool
@@ -110,7 +110,7 @@ type BuildStatus struct {
 	// will be built by this build. It's value is computed from
 	// Build.Spec.Output.To, and should include the registry address, so that
 	// it can be used to push and pull the image.
-	OutputDockerImageReference string
+	OutputDockerImageReference string `json:"outputDockerImageReference,omitempty"`
 
 	// Config is an ObjectReference to the BuildConfig this Build is based on.
 	Config *kapi.ObjectReference
@@ -196,10 +196,10 @@ type BuildSource struct {
 	// of your Dockerfile stanzas. The Dockerfile source type may be used with other options like
 	// git - in those cases the Git repo will have any innate Dockerfile replaced in the context
 	// dir.
-	Dockerfile *string
+	Dockerfile *string `json:"dockerfile,omitempty"`
 
 	// Git contains optional information about git build source
-	Git *GitBuildSource
+	Git *GitBuildSource `json:"git,omitempty"`
 
 	// Images describes a set of images to be used to provide source for the build
 	Images []ImageSource
@@ -207,7 +207,7 @@ type BuildSource struct {
 	// ContextDir specifies the sub-directory where the source code for the application exists.
 	// This allows to have buildable sources in directory other than root of
 	// repository.
-	ContextDir string
+	ContextDir string `json:"contextDir,omitempty"`
 
 	// SourceSecret is the name of a Secret that would be used for setting
 	// up the authentication for cloning private repository.
@@ -302,10 +302,10 @@ type GitSourceRevision struct {
 type GitBuildSource struct {
 	// URI points to the source that will be built. The structure of the source
 	// will depend on the type of build to run
-	URI string
+	URI string `json:"uri,omitempty"`
 
 	// Ref is the branch/tag/ref to build.
-	Ref string
+	Ref string `json:"ref,omitempty"`
 
 	// HTTPProxy is a proxy used to reach the git repository over http
 	HTTPProxy *string
@@ -326,7 +326,7 @@ type SourceControlUser struct {
 // BuildStrategy contains the details of how to perform a build.
 type BuildStrategy struct {
 	// DockerStrategy holds the parameters to the Docker build strategy.
-	DockerStrategy *DockerBuildStrategy
+	DockerStrategy *DockerBuildStrategy `json:"dockerStrategy,omitempty"`
 
 	// SourceStrategy holds the parameters to the Source build strategy.
 	SourceStrategy *SourceBuildStrategy
@@ -379,26 +379,26 @@ type DockerBuildStrategy struct {
 	// From is reference to an DockerImage, ImageStream, ImageStreamTag, or ImageStreamImage from which
 	// the docker image should be pulled
 	// the resulting image will be used in the FROM line of the Dockerfile for this build.
-	From *kapi.ObjectReference
+	From *kapi.ObjectReference `json:"from,omitempty"`
 
 	// PullSecret is the name of a Secret that would be used for setting up
 	// the authentication for pulling the Docker images from the private Docker
 	// registries
-	PullSecret *kapi.LocalObjectReference
+	PullSecret *kapi.LocalObjectReference `json:"pullSecret,omitempty"`
 
 	// NoCache if set to true indicates that the docker build must be executed with the
 	// --no-cache=true flag
-	NoCache bool
+	NoCache bool `json:"noCache,omitempty"`
 
 	// Env contains additional environment variables you want to pass into a builder container
-	Env []kapi.EnvVar
+	Env []kapi.EnvVar `json:"env,omitempty"`
 
 	// ForcePull describes if the builder should pull the images from registry prior to building.
-	ForcePull bool
+	ForcePull bool `json:"forcePull,omitempty"`
 
 	// DockerfilePath is the path of the Dockerfile that will be used to build the Docker image,
 	// relative to the root of the context (contextDir).
-	DockerfilePath string
+	DockerfilePath string `json:"dockerfilePath,omitempty"`
 }
 
 // SourceBuildStrategy defines input parameters specific to an Source build.
@@ -521,12 +521,12 @@ type BuildOutput struct {
 	// This value will be used to look up a Docker image repository to push to.
 	// In the case of an ImageStreamTag, the ImageStreamTag will be looked for in the namespace of
 	// the build unless Namespace is specified.
-	To *kapi.ObjectReference
+	To *kapi.ObjectReference `json:"to,omitempty"`
 
 	// PushSecret is the name of a Secret that would be used for setting
 	// up the authentication for executing the Docker push to authentication
 	// enabled Docker Registry (or Docker Hub).
-	PushSecret *kapi.LocalObjectReference
+	PushSecret *kapi.LocalObjectReference `json:"pushSecret,omitempty"`
 }
 
 const (

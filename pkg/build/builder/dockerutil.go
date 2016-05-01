@@ -126,6 +126,7 @@ func buildImage(client DockerClient, dir string, dockerfilePath string, noCache 
 	if pullAuth != nil {
 		opts.AuthConfigs = *pullAuth
 	}
+	glog.V(9).Infof("todo> docker build with option: %#v", opts)
 	return client.BuildImage(opts)
 }
 

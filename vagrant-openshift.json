@@ -1,0 +1,27 @@
+{
+    "dev_cluster"       :  false,
+    "dind_dev_cluster"  :  false,
+    "num_minions"       :  2,
+    "cpus"              :  1,
+    "memory"            :  3072,
+    "skip_build"        :  false,
+    "master_ip"         :  "172.17.4.50",
+    "minion_ip_base"    :  "172.17.4.",
+
+    "private_network_ip":  "172.17.4.50",
+
+    "sync_folders_type" :  null,
+    "sync_folders"      : 
+        {
+            ".":
+              {
+                "to"  :  "/data/src/github.com/openshift/origin",
+                "exclude" : null
+              },
+            "../../tangfeixiong/go-to-cloud-1":
+              {
+                "to"  :  "/data/src/github.com/tangfeixiong/go-to-cloud-1",
+                "exclude" : null
+              }
+        }
+}
