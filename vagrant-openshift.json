@@ -3,10 +3,16 @@
     "dind_dev_cluster"  :  false,
     "num_minions"       :  2,
     "cpus"              :  1,
-    "memory"            :  3072,
-    "skip_build"        :  false,
+    "memory"            :  2048,
+    "skip_build"        :  true,
     "master_ip"         :  "172.17.4.50",
     "minion_ip_base"    :  "172.17.4.",
+
+    "virtualbox"        :
+        {
+            "box_name"  : "fedora_inst",
+            "box_url"   : "fedora_virtualbox_inst.box"
+        },
 
     "private_network_ip":  "172.17.4.50",
 
