@@ -80,7 +80,7 @@ func autoConvert_api_ClusterPolicyBindingList_To_v1beta3_ClusterPolicyBindingLis
 	if in.Items != nil {
 		out.Items = make([]authorizationapiv1beta3.ClusterPolicyBinding, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_api_ClusterPolicyBinding_To_v1beta3_ClusterPolicyBinding(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -104,7 +104,7 @@ func autoConvert_api_ClusterPolicyList_To_v1beta3_ClusterPolicyList(in *authoriz
 	if in.Items != nil {
 		out.Items = make([]authorizationapiv1beta3.ClusterPolicy, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_api_ClusterPolicy_To_v1beta3_ClusterPolicy(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -128,7 +128,7 @@ func autoConvert_api_ClusterRole_To_v1beta3_ClusterRole(in *authorizationapi.Clu
 	if in.Rules != nil {
 		out.Rules = make([]authorizationapiv1beta3.PolicyRule, len(in.Rules))
 		for i := range in.Rules {
-			if err := s.Convert(&in.Rules[i], &out.Rules[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_api_PolicyRule_To_v1beta3_PolicyRule(&in.Rules[i], &out.Rules[i], s); err != nil {
 				return err
 			}
 		}
@@ -175,7 +175,7 @@ func autoConvert_api_ClusterRoleBindingList_To_v1beta3_ClusterRoleBindingList(in
 	if in.Items != nil {
 		out.Items = make([]authorizationapiv1beta3.ClusterRoleBinding, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_api_ClusterRoleBinding_To_v1beta3_ClusterRoleBinding(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -287,7 +287,7 @@ func autoConvert_api_PolicyBindingList_To_v1beta3_PolicyBindingList(in *authoriz
 	if in.Items != nil {
 		out.Items = make([]authorizationapiv1beta3.PolicyBinding, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_api_PolicyBinding_To_v1beta3_PolicyBinding(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -311,7 +311,7 @@ func autoConvert_api_PolicyList_To_v1beta3_PolicyList(in *authorizationapi.Polic
 	if in.Items != nil {
 		out.Items = make([]authorizationapiv1beta3.Policy, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_api_Policy_To_v1beta3_Policy(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -330,7 +330,7 @@ func autoConvert_api_PolicyRule_To_v1beta3_PolicyRule(in *authorizationapi.Polic
 		defaulting.(func(*authorizationapi.PolicyRule))(in)
 	}
 	// in.Verbs has no peer in out
-	if err := s.Convert(&in.AttributeRestrictions, &out.AttributeRestrictions, 0); err != nil {
+	if err := runtime.Convert_runtime_Object_To_runtime_RawExtension(&in.AttributeRestrictions, &out.AttributeRestrictions, s); err != nil {
 		return err
 	}
 	if in.APIGroups != nil {
@@ -375,7 +375,7 @@ func autoConvert_api_Role_To_v1beta3_Role(in *authorizationapi.Role, out *author
 	if in.Rules != nil {
 		out.Rules = make([]authorizationapiv1beta3.PolicyRule, len(in.Rules))
 		for i := range in.Rules {
-			if err := s.Convert(&in.Rules[i], &out.Rules[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_api_PolicyRule_To_v1beta3_PolicyRule(&in.Rules[i], &out.Rules[i], s); err != nil {
 				return err
 			}
 		}
@@ -422,7 +422,7 @@ func autoConvert_api_RoleBindingList_To_v1beta3_RoleBindingList(in *authorizatio
 	if in.Items != nil {
 		out.Items = make([]authorizationapiv1beta3.RoleBinding, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_api_RoleBinding_To_v1beta3_RoleBinding(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -533,7 +533,7 @@ func autoConvert_v1beta3_ClusterPolicyBindingList_To_api_ClusterPolicyBindingLis
 	if in.Items != nil {
 		out.Items = make([]authorizationapi.ClusterPolicyBinding, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_v1beta3_ClusterPolicyBinding_To_api_ClusterPolicyBinding(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -581,7 +581,7 @@ func autoConvert_v1beta3_ClusterRole_To_api_ClusterRole(in *authorizationapiv1be
 	if in.Rules != nil {
 		out.Rules = make([]authorizationapi.PolicyRule, len(in.Rules))
 		for i := range in.Rules {
-			if err := s.Convert(&in.Rules[i], &out.Rules[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_v1beta3_PolicyRule_To_api_PolicyRule(&in.Rules[i], &out.Rules[i], s); err != nil {
 				return err
 			}
 		}
@@ -630,7 +630,7 @@ func autoConvert_v1beta3_ClusterRoleBindingList_To_api_ClusterRoleBindingList(in
 	if in.Items != nil {
 		out.Items = make([]authorizationapi.ClusterRoleBinding, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_v1beta3_ClusterRoleBinding_To_api_ClusterRoleBinding(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -742,7 +742,7 @@ func autoConvert_v1beta3_PolicyBindingList_To_api_PolicyBindingList(in *authoriz
 	if in.Items != nil {
 		out.Items = make([]authorizationapi.PolicyBinding, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_v1beta3_PolicyBinding_To_api_PolicyBinding(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -766,7 +766,7 @@ func autoConvert_v1beta3_PolicyList_To_api_PolicyList(in *authorizationapiv1beta
 	if in.Items != nil {
 		out.Items = make([]authorizationapi.Policy, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_v1beta3_Policy_To_api_Policy(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -785,7 +785,7 @@ func autoConvert_v1beta3_PolicyRule_To_api_PolicyRule(in *authorizationapiv1beta
 		defaulting.(func(*authorizationapiv1beta3.PolicyRule))(in)
 	}
 	// in.Verbs has no peer in out
-	if err := s.Convert(&in.AttributeRestrictions, &out.AttributeRestrictions, 0); err != nil {
+	if err := runtime.Convert_runtime_RawExtension_To_runtime_Object(&in.AttributeRestrictions, &out.AttributeRestrictions, s); err != nil {
 		return err
 	}
 	if in.APIGroups != nil {
@@ -831,7 +831,7 @@ func autoConvert_v1beta3_Role_To_api_Role(in *authorizationapiv1beta3.Role, out 
 	if in.Rules != nil {
 		out.Rules = make([]authorizationapi.PolicyRule, len(in.Rules))
 		for i := range in.Rules {
-			if err := s.Convert(&in.Rules[i], &out.Rules[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_v1beta3_PolicyRule_To_api_PolicyRule(&in.Rules[i], &out.Rules[i], s); err != nil {
 				return err
 			}
 		}
@@ -880,7 +880,7 @@ func autoConvert_v1beta3_RoleBindingList_To_api_RoleBindingList(in *authorizatio
 	if in.Items != nil {
 		out.Items = make([]authorizationapi.RoleBinding, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := authorizationapiv1beta3.Convert_v1beta3_RoleBinding_To_api_RoleBinding(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -1021,7 +1021,7 @@ func autoConvert_api_BuildConfigList_To_v1beta3_BuildConfigList(in *buildapi.Bui
 	if in.Items != nil {
 		out.Items = make([]v1beta3.BuildConfig, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := v1beta3.Convert_api_BuildConfig_To_v1beta3_BuildConfig(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -1042,7 +1042,7 @@ func autoConvert_api_BuildConfigSpec_To_v1beta3_BuildConfigSpec(in *buildapi.Bui
 	if in.Triggers != nil {
 		out.Triggers = make([]v1beta3.BuildTriggerPolicy, len(in.Triggers))
 		for i := range in.Triggers {
-			if err := s.Convert(&in.Triggers[i], &out.Triggers[i], 0); err != nil {
+			if err := v1beta3.Convert_api_BuildTriggerPolicy_To_v1beta3_BuildTriggerPolicy(&in.Triggers[i], &out.Triggers[i], s); err != nil {
 				return err
 			}
 		}
@@ -1274,21 +1274,22 @@ func autoConvert_api_BuildSpec_To_v1beta3_BuildSpec(in *buildapi.BuildSpec, out 
 		defaulting.(func(*buildapi.BuildSpec))(in)
 	}
 	out.ServiceAccount = in.ServiceAccount
-	if err := s.Convert(&in.Source, &out.Source, 0); err != nil {
+	if err := v1beta3.Convert_api_BuildSource_To_v1beta3_BuildSource(&in.Source, &out.Source, s); err != nil {
 		return err
 	}
 	// unable to generate simple pointer conversion for api.SourceRevision -> v1beta3.SourceRevision
 	if in.Revision != nil {
-		if err := s.Convert(&in.Revision, &out.Revision, 0); err != nil {
+		out.Revision = new(v1beta3.SourceRevision)
+		if err := v1beta3.Convert_api_SourceRevision_To_v1beta3_SourceRevision(in.Revision, out.Revision, s); err != nil {
 			return err
 		}
 	} else {
 		out.Revision = nil
 	}
-	if err := s.Convert(&in.Strategy, &out.Strategy, 0); err != nil {
+	if err := v1beta3.Convert_api_BuildStrategy_To_v1beta3_BuildStrategy(&in.Strategy, &out.Strategy, s); err != nil {
 		return err
 	}
-	if err := s.Convert(&in.Output, &out.Output, 0); err != nil {
+	if err := v1beta3.Convert_api_BuildOutput_To_v1beta3_BuildOutput(&in.Output, &out.Output, s); err != nil {
 		return err
 	}
 	if err := Convert_api_ResourceRequirements_To_v1beta3_ResourceRequirements(&in.Resources, &out.Resources, s); err != nil {
@@ -1360,7 +1361,8 @@ func autoConvert_api_BuildStrategy_To_v1beta3_BuildStrategy(in *buildapi.BuildSt
 	}
 	// unable to generate simple pointer conversion for api.DockerBuildStrategy -> v1beta3.DockerBuildStrategy
 	if in.DockerStrategy != nil {
-		if err := s.Convert(&in.DockerStrategy, &out.DockerStrategy, 0); err != nil {
+		out.DockerStrategy = new(v1beta3.DockerBuildStrategy)
+		if err := v1beta3.Convert_api_DockerBuildStrategy_To_v1beta3_DockerBuildStrategy(in.DockerStrategy, out.DockerStrategy, s); err != nil {
 			return err
 		}
 	} else {
@@ -1368,7 +1370,8 @@ func autoConvert_api_BuildStrategy_To_v1beta3_BuildStrategy(in *buildapi.BuildSt
 	}
 	// unable to generate simple pointer conversion for api.SourceBuildStrategy -> v1beta3.SourceBuildStrategy
 	if in.SourceStrategy != nil {
-		if err := s.Convert(&in.SourceStrategy, &out.SourceStrategy, 0); err != nil {
+		out.SourceStrategy = new(v1beta3.SourceBuildStrategy)
+		if err := v1beta3.Convert_api_SourceBuildStrategy_To_v1beta3_SourceBuildStrategy(in.SourceStrategy, out.SourceStrategy, s); err != nil {
 			return err
 		}
 	} else {
@@ -1376,7 +1379,8 @@ func autoConvert_api_BuildStrategy_To_v1beta3_BuildStrategy(in *buildapi.BuildSt
 	}
 	// unable to generate simple pointer conversion for api.CustomBuildStrategy -> v1beta3.CustomBuildStrategy
 	if in.CustomStrategy != nil {
-		if err := s.Convert(&in.CustomStrategy, &out.CustomStrategy, 0); err != nil {
+		out.CustomStrategy = new(v1beta3.CustomBuildStrategy)
+		if err := v1beta3.Convert_api_CustomBuildStrategy_To_v1beta3_CustomBuildStrategy(in.CustomStrategy, out.CustomStrategy, s); err != nil {
 			return err
 		}
 	} else {
@@ -1793,7 +1797,7 @@ func autoConvert_v1beta3_BuildConfigList_To_api_BuildConfigList(in *v1beta3.Buil
 	if in.Items != nil {
 		out.Items = make([]buildapi.BuildConfig, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := v1beta3.Convert_v1beta3_BuildConfig_To_api_BuildConfig(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -1814,7 +1818,7 @@ func autoConvert_v1beta3_BuildConfigSpec_To_api_BuildConfigSpec(in *v1beta3.Buil
 	if in.Triggers != nil {
 		out.Triggers = make([]buildapi.BuildTriggerPolicy, len(in.Triggers))
 		for i := range in.Triggers {
-			if err := s.Convert(&in.Triggers[i], &out.Triggers[i], 0); err != nil {
+			if err := v1beta3.Convert_v1beta3_BuildTriggerPolicy_To_api_BuildTriggerPolicy(&in.Triggers[i], &out.Triggers[i], s); err != nil {
 				return err
 			}
 		}
@@ -2047,21 +2051,22 @@ func autoConvert_v1beta3_BuildSpec_To_api_BuildSpec(in *v1beta3.BuildSpec, out *
 		defaulting.(func(*v1beta3.BuildSpec))(in)
 	}
 	out.ServiceAccount = in.ServiceAccount
-	if err := s.Convert(&in.Source, &out.Source, 0); err != nil {
+	if err := v1beta3.Convert_v1beta3_BuildSource_To_api_BuildSource(&in.Source, &out.Source, s); err != nil {
 		return err
 	}
 	// unable to generate simple pointer conversion for v1beta3.SourceRevision -> api.SourceRevision
 	if in.Revision != nil {
-		if err := s.Convert(&in.Revision, &out.Revision, 0); err != nil {
+		out.Revision = new(buildapi.SourceRevision)
+		if err := v1beta3.Convert_v1beta3_SourceRevision_To_api_SourceRevision(in.Revision, out.Revision, s); err != nil {
 			return err
 		}
 	} else {
 		out.Revision = nil
 	}
-	if err := s.Convert(&in.Strategy, &out.Strategy, 0); err != nil {
+	if err := v1beta3.Convert_v1beta3_BuildStrategy_To_api_BuildStrategy(&in.Strategy, &out.Strategy, s); err != nil {
 		return err
 	}
-	if err := s.Convert(&in.Output, &out.Output, 0); err != nil {
+	if err := v1beta3.Convert_v1beta3_BuildOutput_To_api_BuildOutput(&in.Output, &out.Output, s); err != nil {
 		return err
 	}
 	if err := Convert_v1beta3_ResourceRequirements_To_api_ResourceRequirements(&in.Resources, &out.Resources, s); err != nil {
@@ -2134,7 +2139,8 @@ func autoConvert_v1beta3_BuildStrategy_To_api_BuildStrategy(in *v1beta3.BuildStr
 	// in.Type has no peer in out
 	// unable to generate simple pointer conversion for v1beta3.DockerBuildStrategy -> api.DockerBuildStrategy
 	if in.DockerStrategy != nil {
-		if err := s.Convert(&in.DockerStrategy, &out.DockerStrategy, 0); err != nil {
+		out.DockerStrategy = new(buildapi.DockerBuildStrategy)
+		if err := v1beta3.Convert_v1beta3_DockerBuildStrategy_To_api_DockerBuildStrategy(in.DockerStrategy, out.DockerStrategy, s); err != nil {
 			return err
 		}
 	} else {
@@ -2142,7 +2148,8 @@ func autoConvert_v1beta3_BuildStrategy_To_api_BuildStrategy(in *v1beta3.BuildStr
 	}
 	// unable to generate simple pointer conversion for v1beta3.SourceBuildStrategy -> api.SourceBuildStrategy
 	if in.SourceStrategy != nil {
-		if err := s.Convert(&in.SourceStrategy, &out.SourceStrategy, 0); err != nil {
+		out.SourceStrategy = new(buildapi.SourceBuildStrategy)
+		if err := v1beta3.Convert_v1beta3_SourceBuildStrategy_To_api_SourceBuildStrategy(in.SourceStrategy, out.SourceStrategy, s); err != nil {
 			return err
 		}
 	} else {
@@ -2150,7 +2157,8 @@ func autoConvert_v1beta3_BuildStrategy_To_api_BuildStrategy(in *v1beta3.BuildStr
 	}
 	// unable to generate simple pointer conversion for v1beta3.CustomBuildStrategy -> api.CustomBuildStrategy
 	if in.CustomStrategy != nil {
-		if err := s.Convert(&in.CustomStrategy, &out.CustomStrategy, 0); err != nil {
+		out.CustomStrategy = new(buildapi.CustomBuildStrategy)
+		if err := v1beta3.Convert_v1beta3_CustomBuildStrategy_To_api_CustomBuildStrategy(in.CustomStrategy, out.CustomStrategy, s); err != nil {
 			return err
 		}
 	} else {
@@ -2562,9 +2570,9 @@ func autoConvert_api_DeploymentDetails_To_v1beta3_DeploymentDetails(in *deployap
 	}
 	out.Message = in.Message
 	if in.Causes != nil {
-		out.Causes = make([]*deployapiv1beta3.DeploymentCause, len(in.Causes))
+		out.Causes = make([]deployapiv1beta3.DeploymentCause, len(in.Causes))
 		for i := range in.Causes {
-			if err := s.Convert(&in.Causes[i], &out.Causes[i], 0); err != nil {
+			if err := Convert_api_DeploymentCause_To_v1beta3_DeploymentCause(&in.Causes[i], &out.Causes[i], s); err != nil {
 				return err
 			}
 		}
@@ -2665,7 +2673,8 @@ func autoConvert_api_DeploymentTriggerPolicy_To_v1beta3_DeploymentTriggerPolicy(
 	out.Type = deployapiv1beta3.DeploymentTriggerType(in.Type)
 	// unable to generate simple pointer conversion for api.DeploymentTriggerImageChangeParams -> v1beta3.DeploymentTriggerImageChangeParams
 	if in.ImageChangeParams != nil {
-		if err := s.Convert(&in.ImageChangeParams, &out.ImageChangeParams, 0); err != nil {
+		out.ImageChangeParams = new(deployapiv1beta3.DeploymentTriggerImageChangeParams)
+		if err := deployapiv1beta3.Convert_api_DeploymentTriggerImageChangeParams_To_v1beta3_DeploymentTriggerImageChangeParams(in.ImageChangeParams, out.ImageChangeParams, s); err != nil {
 			return err
 		}
 	} else {
@@ -2840,9 +2849,9 @@ func autoConvert_v1beta3_DeploymentDetails_To_api_DeploymentDetails(in *deployap
 	}
 	out.Message = in.Message
 	if in.Causes != nil {
-		out.Causes = make([]*deployapi.DeploymentCause, len(in.Causes))
+		out.Causes = make([]deployapi.DeploymentCause, len(in.Causes))
 		for i := range in.Causes {
-			if err := s.Convert(&in.Causes[i], &out.Causes[i], 0); err != nil {
+			if err := Convert_v1beta3_DeploymentCause_To_api_DeploymentCause(&in.Causes[i], &out.Causes[i], s); err != nil {
 				return err
 			}
 		}
@@ -2943,7 +2952,8 @@ func autoConvert_v1beta3_DeploymentTriggerPolicy_To_api_DeploymentTriggerPolicy(
 	out.Type = deployapi.DeploymentTriggerType(in.Type)
 	// unable to generate simple pointer conversion for v1beta3.DeploymentTriggerImageChangeParams -> api.DeploymentTriggerImageChangeParams
 	if in.ImageChangeParams != nil {
-		if err := s.Convert(&in.ImageChangeParams, &out.ImageChangeParams, 0); err != nil {
+		out.ImageChangeParams = new(deployapi.DeploymentTriggerImageChangeParams)
+		if err := deployapiv1beta3.Convert_v1beta3_DeploymentTriggerImageChangeParams_To_api_DeploymentTriggerImageChangeParams(in.ImageChangeParams, out.ImageChangeParams, s); err != nil {
 			return err
 		}
 	} else {
@@ -3056,7 +3066,7 @@ func autoConvert_api_ImageList_To_v1beta3_ImageList(in *imageapi.ImageList, out 
 	if in.Items != nil {
 		out.Items = make([]imageapiv1beta3.Image, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := imageapiv1beta3.Convert_api_Image_To_v1beta3_Image(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -3077,10 +3087,10 @@ func autoConvert_api_ImageStream_To_v1beta3_ImageStream(in *imageapi.ImageStream
 	if err := Convert_api_ObjectMeta_To_v1beta3_ObjectMeta(&in.ObjectMeta, &out.ObjectMeta, s); err != nil {
 		return err
 	}
-	if err := s.Convert(&in.Spec, &out.Spec, 0); err != nil {
+	if err := imageapiv1beta3.Convert_api_ImageStreamSpec_To_v1beta3_ImageStreamSpec(&in.Spec, &out.Spec, s); err != nil {
 		return err
 	}
-	if err := s.Convert(&in.Status, &out.Status, 0); err != nil {
+	if err := imageapiv1beta3.Convert_api_ImageStreamStatus_To_v1beta3_ImageStreamStatus(&in.Status, &out.Status, s); err != nil {
 		return err
 	}
 	return nil
@@ -3093,7 +3103,7 @@ func autoConvert_api_ImageStreamImage_To_v1beta3_ImageStreamImage(in *imageapi.I
 	if err := Convert_api_ObjectMeta_To_v1beta3_ObjectMeta(&in.ObjectMeta, &out.ObjectMeta, s); err != nil {
 		return err
 	}
-	if err := s.Convert(&in.Image, &out.Image, 0); err != nil {
+	if err := imageapiv1beta3.Convert_api_Image_To_v1beta3_Image(&in.Image, &out.Image, s); err != nil {
 		return err
 	}
 	return nil
@@ -3109,7 +3119,7 @@ func autoConvert_api_ImageStreamList_To_v1beta3_ImageStreamList(in *imageapi.Ima
 	if in.Items != nil {
 		out.Items = make([]imageapiv1beta3.ImageStream, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := imageapiv1beta3.Convert_api_ImageStream_To_v1beta3_ImageStream(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -3131,7 +3141,7 @@ func autoConvert_api_ImageStreamMapping_To_v1beta3_ImageStreamMapping(in *imagea
 		return err
 	}
 	// in.DockerImageRepository has no peer in out
-	if err := s.Convert(&in.Image, &out.Image, 0); err != nil {
+	if err := imageapiv1beta3.Convert_api_Image_To_v1beta3_Image(&in.Image, &out.Image, s); err != nil {
 		return err
 	}
 	out.Tag = in.Tag
@@ -3170,7 +3180,7 @@ func autoConvert_api_ImageStreamTag_To_v1beta3_ImageStreamTag(in *imageapi.Image
 	// in.Tag has no peer in out
 	out.Generation = in.Generation
 	// in.Conditions has no peer in out
-	if err := s.Convert(&in.Image, &out.Image, 0); err != nil {
+	if err := imageapiv1beta3.Convert_api_Image_To_v1beta3_Image(&in.Image, &out.Image, s); err != nil {
 		return err
 	}
 	return nil
@@ -3186,7 +3196,7 @@ func autoConvert_api_ImageStreamTagList_To_v1beta3_ImageStreamTagList(in *imagea
 	if in.Items != nil {
 		out.Items = make([]imageapiv1beta3.ImageStreamTag, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := imageapiv1beta3.Convert_api_ImageStreamTag_To_v1beta3_ImageStreamTag(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -3236,7 +3246,7 @@ func autoConvert_v1beta3_ImageList_To_api_ImageList(in *imageapiv1beta3.ImageLis
 	if in.Items != nil {
 		out.Items = make([]imageapi.Image, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := imageapiv1beta3.Convert_v1beta3_Image_To_api_Image(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -3257,10 +3267,10 @@ func autoConvert_v1beta3_ImageStream_To_api_ImageStream(in *imageapiv1beta3.Imag
 	if err := Convert_v1beta3_ObjectMeta_To_api_ObjectMeta(&in.ObjectMeta, &out.ObjectMeta, s); err != nil {
 		return err
 	}
-	if err := s.Convert(&in.Spec, &out.Spec, 0); err != nil {
+	if err := imageapiv1beta3.Convert_v1beta3_ImageStreamSpec_To_api_ImageStreamSpec(&in.Spec, &out.Spec, s); err != nil {
 		return err
 	}
-	if err := s.Convert(&in.Status, &out.Status, 0); err != nil {
+	if err := imageapiv1beta3.Convert_v1beta3_ImageStreamStatus_To_api_ImageStreamStatus(&in.Status, &out.Status, s); err != nil {
 		return err
 	}
 	return nil
@@ -3270,7 +3280,7 @@ func autoConvert_v1beta3_ImageStreamImage_To_api_ImageStreamImage(in *imageapiv1
 	if defaulting, found := s.DefaultingInterface(reflect.TypeOf(*in)); found {
 		defaulting.(func(*imageapiv1beta3.ImageStreamImage))(in)
 	}
-	if err := s.Convert(&in.Image, &out.Image, 0); err != nil {
+	if err := imageapiv1beta3.Convert_v1beta3_Image_To_api_Image(&in.Image, &out.Image, s); err != nil {
 		return err
 	}
 	// in.ImageName has no peer in out
@@ -3287,7 +3297,7 @@ func autoConvert_v1beta3_ImageStreamList_To_api_ImageStreamList(in *imageapiv1be
 	if in.Items != nil {
 		out.Items = make([]imageapi.ImageStream, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := imageapiv1beta3.Convert_v1beta3_ImageStream_To_api_ImageStream(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -3308,7 +3318,7 @@ func autoConvert_v1beta3_ImageStreamMapping_To_api_ImageStreamMapping(in *imagea
 	if err := Convert_v1beta3_ObjectMeta_To_api_ObjectMeta(&in.ObjectMeta, &out.ObjectMeta, s); err != nil {
 		return err
 	}
-	if err := s.Convert(&in.Image, &out.Image, 0); err != nil {
+	if err := imageapiv1beta3.Convert_v1beta3_Image_To_api_Image(&in.Image, &out.Image, s); err != nil {
 		return err
 	}
 	out.Tag = in.Tag
@@ -3341,7 +3351,7 @@ func autoConvert_v1beta3_ImageStreamTag_To_api_ImageStreamTag(in *imageapiv1beta
 	if defaulting, found := s.DefaultingInterface(reflect.TypeOf(*in)); found {
 		defaulting.(func(*imageapiv1beta3.ImageStreamTag))(in)
 	}
-	if err := s.Convert(&in.Image, &out.Image, 0); err != nil {
+	if err := imageapiv1beta3.Convert_v1beta3_Image_To_api_Image(&in.Image, &out.Image, s); err != nil {
 		return err
 	}
 	// in.ImageName has no peer in out
@@ -3358,7 +3368,7 @@ func autoConvert_v1beta3_ImageStreamTagList_To_api_ImageStreamTagList(in *imagea
 	if in.Items != nil {
 		out.Items = make([]imageapi.ImageStreamTag, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := imageapiv1beta3.Convert_v1beta3_ImageStreamTag_To_api_ImageStreamTag(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -4594,7 +4604,7 @@ func autoConvert_api_Template_To_v1beta3_Template(in *templateapi.Template, out 
 	if in.Objects != nil {
 		out.Objects = make([]runtime.RawExtension, len(in.Objects))
 		for i := range in.Objects {
-			if err := s.Convert(&in.Objects[i], &out.Objects[i], 0); err != nil {
+			if err := runtime.Convert_runtime_Object_To_runtime_RawExtension(&in.Objects[i], &out.Objects[i], s); err != nil {
 				return err
 			}
 		}
@@ -4615,7 +4625,7 @@ func autoConvert_api_TemplateList_To_v1beta3_TemplateList(in *templateapi.Templa
 	if in.Items != nil {
 		out.Items = make([]templateapiv1beta3.Template, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := templateapiv1beta3.Convert_api_Template_To_v1beta3_Template(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -4657,7 +4667,7 @@ func autoConvert_v1beta3_Template_To_api_Template(in *templateapiv1beta3.Templat
 	if in.Objects != nil {
 		out.Objects = make([]runtime.Object, len(in.Objects))
 		for i := range in.Objects {
-			if err := s.Convert(&in.Objects[i], &out.Objects[i], 0); err != nil {
+			if err := runtime.Convert_runtime_RawExtension_To_runtime_Object(&in.Objects[i], &out.Objects[i], s); err != nil {
 				return err
 			}
 		}
@@ -4695,7 +4705,7 @@ func autoConvert_v1beta3_TemplateList_To_api_TemplateList(in *templateapiv1beta3
 	if in.Items != nil {
 		out.Items = make([]templateapi.Template, len(in.Items))
 		for i := range in.Items {
-			if err := s.Convert(&in.Items[i], &out.Items[i], 0); err != nil {
+			if err := templateapiv1beta3.Convert_v1beta3_Template_To_api_Template(&in.Items[i], &out.Items[i], s); err != nil {
 				return err
 			}
 		}
@@ -5066,6 +5076,33 @@ func autoConvert_api_AWSElasticBlockStoreVolumeSource_To_v1beta3_AWSElasticBlock
 
 func Convert_api_AWSElasticBlockStoreVolumeSource_To_v1beta3_AWSElasticBlockStoreVolumeSource(in *api.AWSElasticBlockStoreVolumeSource, out *apiv1beta3.AWSElasticBlockStoreVolumeSource, s conversion.Scope) error {
 	return autoConvert_api_AWSElasticBlockStoreVolumeSource_To_v1beta3_AWSElasticBlockStoreVolumeSource(in, out, s)
+}
+
+func autoConvert_api_Capabilities_To_v1beta3_Capabilities(in *api.Capabilities, out *apiv1beta3.Capabilities, s conversion.Scope) error {
+	if defaulting, found := s.DefaultingInterface(reflect.TypeOf(*in)); found {
+		defaulting.(func(*api.Capabilities))(in)
+	}
+	if in.Add != nil {
+		out.Add = make([]apiv1beta3.Capability, len(in.Add))
+		for i := range in.Add {
+			out.Add[i] = apiv1beta3.Capability(in.Add[i])
+		}
+	} else {
+		out.Add = nil
+	}
+	if in.Drop != nil {
+		out.Drop = make([]apiv1beta3.Capability, len(in.Drop))
+		for i := range in.Drop {
+			out.Drop[i] = apiv1beta3.Capability(in.Drop[i])
+		}
+	} else {
+		out.Drop = nil
+	}
+	return nil
+}
+
+func Convert_api_Capabilities_To_v1beta3_Capabilities(in *api.Capabilities, out *apiv1beta3.Capabilities, s conversion.Scope) error {
+	return autoConvert_api_Capabilities_To_v1beta3_Capabilities(in, out, s)
 }
 
 func autoConvert_api_CinderVolumeSource_To_v1beta3_CinderVolumeSource(in *api.CinderVolumeSource, out *apiv1beta3.CinderVolumeSource, s conversion.Scope) error {
@@ -5463,6 +5500,51 @@ func Convert_api_PersistentVolumeClaimVolumeSource_To_v1beta3_PersistentVolumeCl
 	return autoConvert_api_PersistentVolumeClaimVolumeSource_To_v1beta3_PersistentVolumeClaimVolumeSource(in, out, s)
 }
 
+func autoConvert_api_PodSecurityContext_To_v1beta3_PodSecurityContext(in *api.PodSecurityContext, out *apiv1beta3.PodSecurityContext, s conversion.Scope) error {
+	if defaulting, found := s.DefaultingInterface(reflect.TypeOf(*in)); found {
+		defaulting.(func(*api.PodSecurityContext))(in)
+	}
+	// in.HostNetwork has no peer in out
+	// in.HostPID has no peer in out
+	// in.HostIPC has no peer in out
+	// unable to generate simple pointer conversion for api.SELinuxOptions -> v1beta3.SELinuxOptions
+	if in.SELinuxOptions != nil {
+		out.SELinuxOptions = new(apiv1beta3.SELinuxOptions)
+		if err := Convert_api_SELinuxOptions_To_v1beta3_SELinuxOptions(in.SELinuxOptions, out.SELinuxOptions, s); err != nil {
+			return err
+		}
+	} else {
+		out.SELinuxOptions = nil
+	}
+	if in.RunAsUser != nil {
+		out.RunAsUser = new(int64)
+		*out.RunAsUser = *in.RunAsUser
+	} else {
+		out.RunAsUser = nil
+	}
+	if in.RunAsNonRoot != nil {
+		out.RunAsNonRoot = new(bool)
+		*out.RunAsNonRoot = *in.RunAsNonRoot
+	} else {
+		out.RunAsNonRoot = nil
+	}
+	if in.SupplementalGroups != nil {
+		out.SupplementalGroups = make([]int64, len(in.SupplementalGroups))
+		for i := range in.SupplementalGroups {
+			out.SupplementalGroups[i] = in.SupplementalGroups[i]
+		}
+	} else {
+		out.SupplementalGroups = nil
+	}
+	if in.FSGroup != nil {
+		out.FSGroup = new(int64)
+		*out.FSGroup = *in.FSGroup
+	} else {
+		out.FSGroup = nil
+	}
+	return nil
+}
+
 func autoConvert_api_PodSpec_To_v1beta3_PodSpec(in *api.PodSpec, out *apiv1beta3.PodSpec, s conversion.Scope) error {
 	if defaulting, found := s.DefaultingInterface(reflect.TypeOf(*in)); found {
 		defaulting.(func(*api.PodSpec))(in)
@@ -5616,6 +5698,21 @@ func autoConvert_api_ResourceRequirements_To_v1beta3_ResourceRequirements(in *ap
 
 func Convert_api_ResourceRequirements_To_v1beta3_ResourceRequirements(in *api.ResourceRequirements, out *apiv1beta3.ResourceRequirements, s conversion.Scope) error {
 	return autoConvert_api_ResourceRequirements_To_v1beta3_ResourceRequirements(in, out, s)
+}
+
+func autoConvert_api_SELinuxOptions_To_v1beta3_SELinuxOptions(in *api.SELinuxOptions, out *apiv1beta3.SELinuxOptions, s conversion.Scope) error {
+	if defaulting, found := s.DefaultingInterface(reflect.TypeOf(*in)); found {
+		defaulting.(func(*api.SELinuxOptions))(in)
+	}
+	out.User = in.User
+	out.Role = in.Role
+	out.Type = in.Type
+	out.Level = in.Level
+	return nil
+}
+
+func Convert_api_SELinuxOptions_To_v1beta3_SELinuxOptions(in *api.SELinuxOptions, out *apiv1beta3.SELinuxOptions, s conversion.Scope) error {
+	return autoConvert_api_SELinuxOptions_To_v1beta3_SELinuxOptions(in, out, s)
 }
 
 func autoConvert_api_SecretVolumeSource_To_v1beta3_SecretVolumeSource(in *api.SecretVolumeSource, out *apiv1beta3.SecretVolumeSource, s conversion.Scope) error {
@@ -5837,6 +5934,33 @@ func autoConvert_v1beta3_AWSElasticBlockStoreVolumeSource_To_api_AWSElasticBlock
 
 func Convert_v1beta3_AWSElasticBlockStoreVolumeSource_To_api_AWSElasticBlockStoreVolumeSource(in *apiv1beta3.AWSElasticBlockStoreVolumeSource, out *api.AWSElasticBlockStoreVolumeSource, s conversion.Scope) error {
 	return autoConvert_v1beta3_AWSElasticBlockStoreVolumeSource_To_api_AWSElasticBlockStoreVolumeSource(in, out, s)
+}
+
+func autoConvert_v1beta3_Capabilities_To_api_Capabilities(in *apiv1beta3.Capabilities, out *api.Capabilities, s conversion.Scope) error {
+	if defaulting, found := s.DefaultingInterface(reflect.TypeOf(*in)); found {
+		defaulting.(func(*apiv1beta3.Capabilities))(in)
+	}
+	if in.Add != nil {
+		out.Add = make([]api.Capability, len(in.Add))
+		for i := range in.Add {
+			out.Add[i] = api.Capability(in.Add[i])
+		}
+	} else {
+		out.Add = nil
+	}
+	if in.Drop != nil {
+		out.Drop = make([]api.Capability, len(in.Drop))
+		for i := range in.Drop {
+			out.Drop[i] = api.Capability(in.Drop[i])
+		}
+	} else {
+		out.Drop = nil
+	}
+	return nil
+}
+
+func Convert_v1beta3_Capabilities_To_api_Capabilities(in *apiv1beta3.Capabilities, out *api.Capabilities, s conversion.Scope) error {
+	return autoConvert_v1beta3_Capabilities_To_api_Capabilities(in, out, s)
 }
 
 func autoConvert_v1beta3_CinderVolumeSource_To_api_CinderVolumeSource(in *apiv1beta3.CinderVolumeSource, out *api.CinderVolumeSource, s conversion.Scope) error {
@@ -6236,6 +6360,48 @@ func Convert_v1beta3_PersistentVolumeClaimVolumeSource_To_api_PersistentVolumeCl
 	return autoConvert_v1beta3_PersistentVolumeClaimVolumeSource_To_api_PersistentVolumeClaimVolumeSource(in, out, s)
 }
 
+func autoConvert_v1beta3_PodSecurityContext_To_api_PodSecurityContext(in *apiv1beta3.PodSecurityContext, out *api.PodSecurityContext, s conversion.Scope) error {
+	if defaulting, found := s.DefaultingInterface(reflect.TypeOf(*in)); found {
+		defaulting.(func(*apiv1beta3.PodSecurityContext))(in)
+	}
+	// unable to generate simple pointer conversion for v1beta3.SELinuxOptions -> api.SELinuxOptions
+	if in.SELinuxOptions != nil {
+		out.SELinuxOptions = new(api.SELinuxOptions)
+		if err := Convert_v1beta3_SELinuxOptions_To_api_SELinuxOptions(in.SELinuxOptions, out.SELinuxOptions, s); err != nil {
+			return err
+		}
+	} else {
+		out.SELinuxOptions = nil
+	}
+	if in.RunAsUser != nil {
+		out.RunAsUser = new(int64)
+		*out.RunAsUser = *in.RunAsUser
+	} else {
+		out.RunAsUser = nil
+	}
+	if in.RunAsNonRoot != nil {
+		out.RunAsNonRoot = new(bool)
+		*out.RunAsNonRoot = *in.RunAsNonRoot
+	} else {
+		out.RunAsNonRoot = nil
+	}
+	if in.SupplementalGroups != nil {
+		out.SupplementalGroups = make([]int64, len(in.SupplementalGroups))
+		for i := range in.SupplementalGroups {
+			out.SupplementalGroups[i] = in.SupplementalGroups[i]
+		}
+	} else {
+		out.SupplementalGroups = nil
+	}
+	if in.FSGroup != nil {
+		out.FSGroup = new(int64)
+		*out.FSGroup = *in.FSGroup
+	} else {
+		out.FSGroup = nil
+	}
+	return nil
+}
+
 func autoConvert_v1beta3_PodSpec_To_api_PodSpec(in *apiv1beta3.PodSpec, out *api.PodSpec, s conversion.Scope) error {
 	if defaulting, found := s.DefaultingInterface(reflect.TypeOf(*in)); found {
 		defaulting.(func(*apiv1beta3.PodSpec))(in)
@@ -6392,6 +6558,21 @@ func autoConvert_v1beta3_ResourceRequirements_To_api_ResourceRequirements(in *ap
 
 func Convert_v1beta3_ResourceRequirements_To_api_ResourceRequirements(in *apiv1beta3.ResourceRequirements, out *api.ResourceRequirements, s conversion.Scope) error {
 	return autoConvert_v1beta3_ResourceRequirements_To_api_ResourceRequirements(in, out, s)
+}
+
+func autoConvert_v1beta3_SELinuxOptions_To_api_SELinuxOptions(in *apiv1beta3.SELinuxOptions, out *api.SELinuxOptions, s conversion.Scope) error {
+	if defaulting, found := s.DefaultingInterface(reflect.TypeOf(*in)); found {
+		defaulting.(func(*apiv1beta3.SELinuxOptions))(in)
+	}
+	out.User = in.User
+	out.Role = in.Role
+	out.Type = in.Type
+	out.Level = in.Level
+	return nil
+}
+
+func Convert_v1beta3_SELinuxOptions_To_api_SELinuxOptions(in *apiv1beta3.SELinuxOptions, out *api.SELinuxOptions, s conversion.Scope) error {
+	return autoConvert_v1beta3_SELinuxOptions_To_api_SELinuxOptions(in, out, s)
 }
 
 func autoConvert_v1beta3_SecretVolumeSource_To_api_SecretVolumeSource(in *apiv1beta3.SecretVolumeSource, out *api.SecretVolumeSource, s conversion.Scope) error {
@@ -6618,6 +6799,7 @@ func init() {
 		autoConvert_api_BuildStrategy_To_v1beta3_BuildStrategy,
 		autoConvert_api_BuildTriggerPolicy_To_v1beta3_BuildTriggerPolicy,
 		autoConvert_api_Build_To_v1beta3_Build,
+		autoConvert_api_Capabilities_To_v1beta3_Capabilities,
 		autoConvert_api_CinderVolumeSource_To_v1beta3_CinderVolumeSource,
 		autoConvert_api_ClusterNetworkList_To_v1beta3_ClusterNetworkList,
 		autoConvert_api_ClusterNetwork_To_v1beta3_ClusterNetwork,
@@ -6692,6 +6874,7 @@ func init() {
 		autoConvert_api_ObjectReference_To_v1beta3_ObjectReference,
 		autoConvert_api_Parameter_To_v1beta3_Parameter,
 		autoConvert_api_PersistentVolumeClaimVolumeSource_To_v1beta3_PersistentVolumeClaimVolumeSource,
+		autoConvert_api_PodSecurityContext_To_v1beta3_PodSecurityContext,
 		autoConvert_api_PodSpec_To_v1beta3_PodSpec,
 		autoConvert_api_PodTemplateSpec_To_v1beta3_PodTemplateSpec,
 		autoConvert_api_PolicyBindingList_To_v1beta3_PolicyBindingList,
@@ -6720,6 +6903,7 @@ func init() {
 		autoConvert_api_RouteSpec_To_v1beta3_RouteSpec,
 		autoConvert_api_RouteStatus_To_v1beta3_RouteStatus,
 		autoConvert_api_Route_To_v1beta3_Route,
+		autoConvert_api_SELinuxOptions_To_v1beta3_SELinuxOptions,
 		autoConvert_api_SecretBuildSource_To_v1beta3_SecretBuildSource,
 		autoConvert_api_SecretSpec_To_v1beta3_SecretSpec,
 		autoConvert_api_SecretVolumeSource_To_v1beta3_SecretVolumeSource,
@@ -6758,6 +6942,7 @@ func init() {
 		autoConvert_v1beta3_BuildStrategy_To_api_BuildStrategy,
 		autoConvert_v1beta3_BuildTriggerPolicy_To_api_BuildTriggerPolicy,
 		autoConvert_v1beta3_Build_To_api_Build,
+		autoConvert_v1beta3_Capabilities_To_api_Capabilities,
 		autoConvert_v1beta3_CinderVolumeSource_To_api_CinderVolumeSource,
 		autoConvert_v1beta3_ClusterNetworkList_To_api_ClusterNetworkList,
 		autoConvert_v1beta3_ClusterNetwork_To_api_ClusterNetwork,
@@ -6833,6 +7018,7 @@ func init() {
 		autoConvert_v1beta3_ObjectReference_To_api_ObjectReference,
 		autoConvert_v1beta3_Parameter_To_api_Parameter,
 		autoConvert_v1beta3_PersistentVolumeClaimVolumeSource_To_api_PersistentVolumeClaimVolumeSource,
+		autoConvert_v1beta3_PodSecurityContext_To_api_PodSecurityContext,
 		autoConvert_v1beta3_PodSpec_To_api_PodSpec,
 		autoConvert_v1beta3_PodTemplateSpec_To_api_PodTemplateSpec,
 		autoConvert_v1beta3_PolicyBindingList_To_api_PolicyBindingList,
@@ -6861,6 +7047,7 @@ func init() {
 		autoConvert_v1beta3_RouteSpec_To_api_RouteSpec,
 		autoConvert_v1beta3_RouteStatus_To_api_RouteStatus,
 		autoConvert_v1beta3_Route_To_api_Route,
+		autoConvert_v1beta3_SELinuxOptions_To_api_SELinuxOptions,
 		autoConvert_v1beta3_SecretBuildSource_To_api_SecretBuildSource,
 		autoConvert_v1beta3_SecretSpec_To_api_SecretSpec,
 		autoConvert_v1beta3_SecretVolumeSource_To_api_SecretVolumeSource,
