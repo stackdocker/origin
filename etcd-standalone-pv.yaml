@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: etcd-storage
+  namespace: openshift-origin
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadOnlyMany
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain # Recycle Delete Retain
+  hostPath:
+    path: /tmp/pv/etcd-storage

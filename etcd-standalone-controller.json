@@ -1,0 +1,59 @@
+        {
+            "kind": "ReplicationController",
+            "apiVersion": "v1",
+            "metadata":
+            {
+                "name": "etcd",
+                "namespace": "openshift-origin"
+            },
+            "spec":
+            {
+                "replicas": 1,
+                "selector": 
+                {
+                    "app": "etcd",
+                    "purpose": "etcd"
+                },
+                "template":
+                {
+                    "metadata":
+                    {
+                        "labels": {"app": "etcd", "purpose": "etcd"}
+                    },
+                    "spec":
+                    {
+                        "containers":
+                        [{
+                            "name": "etcd",
+                            "image": "openshift/etcd-20-centos7",
+                            "ports": [{"containerPort": 4001, "name": "client"}, {"containerPort": 7001, "name": "server"}],
+                            "command": ["/usr/local/bin/etcd"],
+                            "args": ["--data-dir", "/var/lib/etcd"],
+                            "env":
+                            [{
+                                "name": "ETCD_NUM_MEMBERS",
+                                "value": "1"
+                            }, {
+                                "name": "ETCD_LISTEN_CLIENT_URLS",
+                                "value": "http://0.0.0.0:2379,http://0.0.0.0:4001"
+                            }, {
+                                "name": "ETCD_FORCE_NEW_CLUSTER",
+                                "value": "true"
+                            }],
+                            "volumeMounts":
+                            [{
+                                "mountPath": "/var/lib/etcd",
+                                "name": "etcd-storage"
+                            }]
+                        }],
+                        "volumes":
+                        [{
+                            "name": "etcd-storage",
+                            "persistentVolumeClaim": {"claimName": "etcd-storage"}
+                        }],
+                        "restartPolicy": "Always",
+                        "dnsPolicy": "ClusterFirst"
+                    }
+                }
+            }
+        }

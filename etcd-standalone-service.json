@@ -1,0 +1,28 @@
+        {
+            "kind": "Service",
+            "apiVersion": "v1",
+            "metadata":
+            {
+                "name": "etcd",
+                "namespace": "openshift-origin"
+            },
+            "spec":
+            {
+                "ports":
+                [{
+                    "name": "client",
+                    "port": 4001,
+                    "targetPort": "client"
+                }, {
+                    "name": "server",
+                    "port": 7001,
+                    "targetPort": "server"
+                }],
+                "selector":
+                {
+                    "app": "etcd",
+                    "purpose": "etcd"
+                },
+                "type": "ClusterIP"
+            }
+        }

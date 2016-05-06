@@ -23,3 +23,4 @@ origin.iml
 *.go~
 tags
 .envrc
+fedora_virtualbox_inst.box
