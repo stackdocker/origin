@@ -26,7 +26,7 @@ RUN  mkdir -p /var/lib/origin && \
      ln -s openshift atomic-enterprise && ln -s openshift kubectl && ln -s openshift kubernetes && \
      ln -s openshift openshift-docker-build && ln -s openshift openshift-sti-build && ln -s openshift osc && \
      ln -s openshift kube-apiserver && ln -s openshift kubelet && ln -s openshift kube-scheduler && \
-     ln -s openshift openshift && ln -s openshift openshift-recycle && ln -s openshift origin && \
+     ln -s openshift openshift-recycle && ln -s openshift origin && \
      ln -s openshift kube-controller-manager && ln -s openshift kube-proxy && ln -s openshift oadm && \
      ln -s openshift openshift-deploy && ln -s openshift openshift-router && ln -s openshift osadm
 
