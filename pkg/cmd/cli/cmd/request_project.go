@@ -57,14 +57,17 @@ func NewCmdRequestProject(baseName, name, ocLoginName, ocProjectName string, f *
 		Long:    requestProjectLong,
 		Example: fmt.Sprintf(requestProjectExample, fullName),
 		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Printf("[tangfx] new project option: %+v\n", args)
 			if err := options.complete(cmd, f); err != nil {
 				kcmdutil.CheckErr(err)
 			}
 
+			fmt.Printf("[tangfx] new project option: %+v %+v\n", cmd, f)
 			var err error
 			if options.Client, _, err = f.Clients(); err != nil {
 				kcmdutil.CheckErr(err)
 			}
+			fmt.Printf("[tangfx] new project option: %+v\n", options.Client)
 			if err := options.Run(); err != nil {
 				kcmdutil.CheckErr(err)
 			}
@@ -97,7 +100,8 @@ func (o *NewProjectOptions) complete(cmd *cobra.Command, f *clientcmd.Factory) e
 
 func (o *NewProjectOptions) Run() error {
 	// TODO eliminate this when we get better forbidden messages
-	_, err := o.Client.ProjectRequests().List(kapi.ListOptions{})
+	result, err := o.Client.ProjectRequests().List(kapi.ListOptions{})
+	fmt.Printf("[tangfx] project request list: %+v %+v\n", result, err)
 	if err != nil {
 		return err
 	}
@@ -109,6 +113,7 @@ func (o *NewProjectOptions) Run() error {
 	projectRequest.Annotations = make(map[string]string)
 
 	project, err := o.Client.ProjectRequests().Create(projectRequest)
+	fmt.Printf("[tangfx] project request create: %+v,\nresult: %+v,\nerr: %+v\n", projectRequest, project, err)
 	if err != nil {
 		return err
 	}
@@ -119,6 +124,7 @@ func (o *NewProjectOptions) Run() error {
 		o.ProjectOptions.SkipAccessValidation = true
 
 		if err := o.ProjectOptions.RunProject(); err != nil {
+			fmt.Fprintf(o.Out, "[tangfx] project request run: %+v %+v\n", o.ProjectOptions, err)
 			return err
 		}
 	}

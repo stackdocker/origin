@@ -10,4 +10,4 @@ spec:
       targetPort: 8443
   selector:
     name: openshift
-  type: NodePort # LoadBalancer
+  type: LoadBalancer

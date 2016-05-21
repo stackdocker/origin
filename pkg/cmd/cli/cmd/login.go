@@ -55,6 +55,7 @@ func NewCmdLogin(fullName string, f *osclientcmd.Factory, reader io.Reader, out 
 		Long:    loginLong,
 		Example: fmt.Sprintf(loginExample, fullName),
 		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Fprintf(out, "[tangfx] command args: %+v\n", args)
 			if err := options.Complete(f, cmd, args); err != nil {
 				kcmdutil.CheckErr(err)
 			}
@@ -63,6 +64,7 @@ func NewCmdLogin(fullName string, f *osclientcmd.Factory, reader io.Reader, out 
 				kcmdutil.CheckErr(err)
 			}
 
+			fmt.Fprintf(out, "[tangfx] login option: %+v\n", options)
 			err := RunLogin(cmd, options)
 
 			if kapierrors.IsUnauthorized(err) {
@@ -93,6 +95,7 @@ func NewCmdLogin(fullName string, f *osclientcmd.Factory, reader io.Reader, out 
 
 func (o *LoginOptions) Complete(f *osclientcmd.Factory, cmd *cobra.Command, args []string) error {
 	kubeconfig, err := f.OpenShiftClientConfig.RawConfig()
+	fmt.Fprintf(o.Out, "[tangfx] kubeconfig: %v, err=%v\n", kubeconfig, err)
 	o.StartingKubeConfig = &kubeconfig
 	if err != nil {
 		if !os.IsNotExist(err) {
@@ -106,12 +109,14 @@ func (o *LoginOptions) Complete(f *osclientcmd.Factory, cmd *cobra.Command, args
 
 	if serverFlag := kcmdutil.GetFlagString(cmd, "server"); len(serverFlag) > 0 {
 		if err := addr.Set(serverFlag); err != nil {
+			fmt.Fprintf(o.Out, "[tangfx] server flag: %v\n", serverFlag)
 			return err
 		}
 		o.Server = addr.String()
 
 	} else if len(args) == 1 {
 		if err := addr.Set(args[0]); err != nil {
+			fmt.Fprintf(o.Out, "[tangfx] server address: %v\n", addr)
 			return err
 		}
 		o.Server = addr.String()
@@ -140,6 +145,7 @@ func (o *LoginOptions) Complete(f *osclientcmd.Factory, cmd *cobra.Command, args
 
 	o.APIVersion, err = unversioned.ParseGroupVersion(apiVersionString)
 	if err != nil {
+		fmt.Fprintf(o.Out, "[tangfx] api version: %v\n", apiVersionString)
 		return err
 	}
 
@@ -150,7 +156,7 @@ func (o *LoginOptions) Complete(f *osclientcmd.Factory, cmd *cobra.Command, args
 	o.DefaultNamespace, _, _ = f.OpenShiftClientConfig.Namespace()
 
 	o.PathOptions = config.NewPathOptions(cmd)
-
+	fmt.Fprintf(o.Out, "[tangfx] result login options: %v\n", o)
 	return nil
 }
 

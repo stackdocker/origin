@@ -7,23 +7,22 @@ spec:
   hostNetwork: true
   containers:
   - name: kube-apiserver
-    image: gcr.io/google_containers/hyperkube-amd64:v1.3.0-alpha.2
+    image: gcr.io/google_containers/hyperkube-amd64:v1.2.4 # v1.3.0-alpha.2
     command:
     - /hyperkube
     - apiserver
-    - --bind-address=0.0.0.0
+    - --bind-address=172.17.4.50
     - --etcd-servers=http://127.0.0.1:2379
     - --allow-privileged=true
     - --service-cluster-ip-range=10.3.0.0/24
     - --secure-port=443
     - --advertise-address=172.17.4.50
-    - --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
-    - --tls-cert-file=/data/src/github.com/openshift/origin/etc/kubernetes/ssl/apiserver.pem
-    - --tls-private-key-file=/data/src/github.com/openshift/origin/etc/kubernetes/ssl/apiserver-key.pem
-    - --client-ca-file=/data/src/github.com/openshift/origin/etc/kubernetes/ssl/ca.pem
-    - --service-account-key-file=/data/src/github.com/openshift/origin/etc/kubernetes/ssl/apiserver-key.pem
+    - --admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,ServiceAccount,SecurityContextDeny,ResourceQuota
+    - --tls-cert-file=/etc/kubernetes/ssl/server.cert
+    - --tls-private-key-file=/etc/kubernetes/ssl/server.key
+    - --client-ca-file=/etc/kubernetes/ssl/ca.crt
+    - --service-account-key-file=/etc/kubernetes/ssl/server.key
     - --runtime-config=extensions/v1beta1/deployments=true,extensions/v1beta1/daemonsets=true,extensions/v1beta1=true,extensions/v1beta1/thirdpartyresources=true
-    - --kubeconfig=/data/src/github.com/openshift/origin/kubeconfig
     - --v=2
     ports:
     - containerPort: 443
@@ -41,7 +40,7 @@ spec:
       readOnly: true
   volumes:
   - hostPath:
-      path: /srv/etc/kubernetes/ssl
+      path: /data/src/github.com/openshift/origin/etc/kubernetes/cacerts
     name: ssl-certs-kubernetes
   - hostPath:
       path: /usr/share/ca-certificates

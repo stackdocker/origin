@@ -279,6 +279,7 @@ func (o *LoginOptions) gatherAuthInfo() error {
 	o.Username = me.Name
 	o.Config = clientConfig
 	fmt.Fprint(o.Out, "Login successful.\n\n")
+	fmt.Fprintf(o.Out, "[tangfx] login client: %+v,\noptions:= %+v\n", osClient, o)
 
 	return nil
 }

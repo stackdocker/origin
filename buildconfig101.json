@@ -1,0 +1,67 @@
+        {
+            "kind": "BuildConfig",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "netcat-http-alpine",
+				"namespace": "tangfeixiong",
+                "creationTimestamp": null,
+                "labels": {
+                    "build": "netcat-http-alpine"
+                },
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewBuild"
+                }
+            },
+            "spec": {
+                "triggers": [
+                    {
+                        "type": "GitHub",
+                        "github": {
+                            "secret": "5Z7DPeg3Ul2rJIAGtzJ7"
+                        }
+                    },
+                    {
+                        "type": "Generic",
+                        "generic": {
+                            "secret": "BJS3bVeDxKjg1Zl4RZWY"
+                        }
+                    },
+                    {
+                        "type": "ConfigChange"
+                    },
+                    {
+                        "type": "ImageChange",
+                        "imageChange": {}
+                    }
+                ],
+                "source": {
+                    "type": "Git",
+                    "git": {
+                        "uri": "https://github.com/tangfeixiong/docker-nc.git",
+                        "ref": "master"
+                    },
+                    "contextDir": "latest",
+                    "secrets": []
+                },
+                "strategy": {
+                    "type": "Docker",
+                    "dockerStrategy": {
+                        "forcePull": false
+                    }
+                },
+                "output": {
+                    "to": {
+                        "kind": "DockerImage",
+                        "name": "docker.io/tangfeixiong/netcat-alpine:latest"
+                    },
+		    "pushSecret": {
+                        "name": "tangfeixiong"
+		    }
+                },
+                "resources": {},
+                "postCommit": {}
+            },
+            "status": {
+                "lastVersion": 0
+            }
+        }

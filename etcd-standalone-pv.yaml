@@ -5,11 +5,11 @@ metadata:
   namespace: openshift-origin
 spec:
   capacity:
-    storage: 5Gi
+    storage: 2Gi
   accessModes:
     - ReadWriteOnce
     - ReadOnlyMany
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain # Recycle Delete Retain
   hostPath:
-    path: /tmp/pv/etcd-storage
+    path: /data/src/github.com/openshift/origin/openshift.local.etcd

@@ -29,16 +29,16 @@
                     {
                         "command": [
                             "/usr/local/bin/etcd",
-                            "-data-dir",
+                            "--data-dir",
                             "/var/etcd/data",
-                            "-listen-client-urls",
+                            "--listen-client-urls",
                             "http://127.0.0.1:2379,http://127.0.0.1:4001",
-                            "-advertise-client-urls",
+                            "--advertise-client-urls",
                             "http://127.0.0.1:2379,http://127.0.0.1:4001",
-                            "-initial-cluster-token",
+                            "--initial-cluster-token",
                             "skydns-etcd"
                         ],
-                        "image": "gcr.io/google_containers/etcd:2.2.1",
+                        "image": "gcr.io/google_containers/etcd-amd64:2.2.1",
                         "name": "etcd",
                         "resources": {
                             "limits": {
@@ -55,7 +55,7 @@
                     },
                     {
                         "args": [
-                            "-domain=cluster.local"
+                            "--domain=cluster.local"
                         ],
                         "image": "gcr.io/google_containers/kube2sky:1.14",
                         "name": "kube2sky",
@@ -68,10 +68,10 @@
                     },
                     {
                         "args": [
-                            "-machines=http://127.0.0.1:4001",
-                            "-addr=0.0.0.0:53",
-                            "-ns-rotate=false",
-                            "-domain=cluster.local."
+                            "--machines=http://127.0.0.1:4001",
+                            "--addr=0.0.0.0:53",
+                            "--ns-rotate=false",
+                            "--domain=cluster.local."
                         ],
                         "image": "gcr.io/google_containers/skydns:2015-10-13-8c72f8c",
                         "livenessProbe": {
@@ -114,8 +114,8 @@
                     },
                     {
                         "args": [
-                            "-cmd=nslookup kubernetes.default.svc.cluster.local localhost >/dev/null",
-                            "-port=8080"
+                            "--cmd=nslookup kubernetes.default.svc.cluster.local localhost >/dev/null",
+                            "--port=8080"
                         ],
                         "image": "gcr.io/google_containers/exechealthz:1.0",
                         "name": "healthz",

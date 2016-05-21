@@ -20,7 +20,7 @@ FROM openshift/origin-base
 #    hack/build-go.sh && \
 #    cp _output/local/bin/linux/amd64/* /usr/bin/ && \
 #    mkdir -p /var/lib/origin
-COPY _output/local/bin/linux/amd64/openshift _output/local/bin/linux/amd64/oc /usr/bin/
+COPY openshift oc /usr/bin/
 WORKDIR /usr/bin
 RUN  mkdir -p /var/lib/origin && \
      ln -s openshift atomic-enterprise && ln -s openshift kubectl && ln -s openshift kubernetes && \

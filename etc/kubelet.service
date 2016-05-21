@@ -1,9 +1,10 @@
 [Service]
-ExecStartPre=/usr/bin/mkdir -p /etc/kubernetes/manifests
-ExecStart=/usr/bin/kubelet   --api_servers=http://127.0.0.1:8080   --register-node=true   --allow-privileged=true   --config=/etc/kubernetes/manifests   --hostname-override=172.17.4.99   --cluster_dns=10.3.0.10   --cluster_domain=cluster.local
+#ExecStartPre=/usr/bin/mkdir -p /etc/kubernetes/manifests
+#ExecStart=/user/bin/kubelet   --api_servers=http://127.0.0.1:8080   --register-node=true   --allow-privileged=true   --config=/etc/kubernetes/manifests   --hostname-override=172.17.4.50   --cluster_dns=10.3.0.10   --cluster_domain=cluster.local
 Restart=always
 RestartSec=10
 
+ExecStart=/data/bin/kubelet   --api_servers=http://127.0.0.1:8080   --register-node=true   --allow-privileged=true   --config=/data/src/github.com/openshift/origin/etc/kubernetes/manifests   --hostname-override=172.17.4.50   --cluster_dns=10.3.0.10   --cluster_domain=cluster.local   --address=172.17.4.50 --node-ip=172.17.4.50 --kubeconfig=/data/src/github.com/openshift/origin/kubeconfig --v=2
+
 [Install]
 WantedBy=multi-user.target
-

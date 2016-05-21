@@ -13,7 +13,7 @@ spec:
   - ReadWriteMany
   resources:
     limits:
-      storage: 5Gi
+      storage: 2Gi
     requests:
       storage: 2000Mi
 status: {}

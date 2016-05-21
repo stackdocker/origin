@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ReplicationController
+metadata: 
+  labels: 
+    name: openshift
+  name: openshift
+  namespace: openshift-origin
+spec: 
+  replicas: 1
+  selector: 
+    name: openshift
+  template: 
+    metadata: 
+      labels: 
+        name: openshift
+      name: openshift
+      namespace: openshift-origin
+    spec: 
+      containers: 
+        - args: 
+            - start
+            - master
+            - --config=/data/src/github.com/openshift/origin/openshift.local.config/master/master-config.yaml
+            - --log-flush-frequency=10s
+            - --loglevel=5
+            # - --v=5
+          image: "tangfeixiong/openshift-origin" # "openshift/origin"
+          imagePullPolicy: IfNotPresent
+          name: origin
+          ports: 
+            - containerPort: 8443
+              name: openshift
+          volumeMounts: 
+            - mountPath: /data/src/github.com/openshift/origin/openshift.local.config/master
+              name: config
+              readOnly: true
+      volumes: 
+        - name: config
+          hostPath:
+            path: /data/src/github.com/openshift/origin/openshift.local.config/master

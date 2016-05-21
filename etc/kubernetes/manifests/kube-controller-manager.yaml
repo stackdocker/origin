@@ -6,14 +6,14 @@ metadata:
 spec:
   containers:
   - name: kube-controller-manager
-    image: gcr.io/google_containers/hyperkube-amd64:v1.3.0-alpha.2
+    image: gcr.io/google_containers/hyperkube-amd64:v1.2.4 # v1.3.0-alpha.2
     command:
     - /hyperkube
     - controller-manager
     - --master=http://127.0.0.1:8080
-    - --service-account-private-key-file=/data/src/github.com/openshift/origin/etc/kubernetes/ssl/apiserver-key.pem
-    - --root-ca-file=/data/src/github.com/openshift/origin/etc/kubernetes/ssl/ca.pem
-    - --kubeconfig=/data/src/github.com/openshift/origin/kubeconfig
+    - --service-account-private-key-file=/etc/kubernetes/ssl/server.key
+    - --root-ca-file=/etc/kubernetes/ssl/ca.crt
+    # - --address=172.17.4.50
     - --v=2
     livenessProbe:
       httpGet:
@@ -32,7 +32,7 @@ spec:
   hostNetwork: true
   volumes:
   - hostPath:
-      path: /srv/etc/kubernetes/ssl
+      path: /data/src/github.com/openshift/origin/etc/kubernetes/cacerts
     name: ssl-certs-kubernetes
   - hostPath:
       path: /usr/share/ca-certificates
