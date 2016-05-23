@@ -32,6 +32,7 @@ func (s *ClientLookupTokenRetriever) GetToken(namespace, name string) (string, e
 		// Get the service account
 		serviceAccount, err := s.Client.ServiceAccounts(namespace).Get(name)
 		if err != nil {
+			fmt.Printf("[tangfx-%v] get service account %v:%v err: %v\n", i, namespace, name, err)
 			continue
 		}
 
@@ -40,6 +41,7 @@ func (s *ClientLookupTokenRetriever) GetToken(namespace, name string) (string, e
 		for _, secretRef := range serviceAccount.Secrets {
 			secret, err2 := s.Client.Secrets(namespace).Get(secretRef.Name)
 			if err2 != nil {
+				fmt.Printf("[tangfx-%v] get secret %v(ns=%v) err: %v\n", i, secretRef.Name, name, err)
 				// Tolerate fetch errors on a particular secret
 				continue
 			}

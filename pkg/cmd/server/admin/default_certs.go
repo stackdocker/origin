@@ -207,6 +207,13 @@ func DefaultNodeKubeConfigFile(nodeDir string) string {
 	return path.Join(nodeDir, "node.kubeconfig")
 }
 
+func DefaultServiceSignerCAInfo(certDir string) configapi.CertInfo {
+	caInfo := configapi.CertInfo{}
+	caInfo.CertFile = DefaultCAFilename(certDir, "service-signer")
+	caInfo.KeyFile = DefaultKeyFilename(certDir, "service-signer")
+	return caInfo
+}
+
 func DefaultCAFilename(certDir, prefix string) string {
 	return path.Join(certDir, prefix+".crt")
 }
