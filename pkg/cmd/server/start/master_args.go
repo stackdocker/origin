@@ -305,6 +305,7 @@ func (args MasterArgs) BuildSerializeableMasterConfig() (*configapi.MasterConfig
 	}
 
 	internal, err := applyDefaults(config, configapiv1.SchemeGroupVersion)
+	fmt.Printf("[tangfx] apply v1 scheme for masterConfig: %v, err: %v\n", internal, err)
 	if err != nil {
 		return nil, err
 	}

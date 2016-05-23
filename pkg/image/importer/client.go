@@ -340,12 +340,17 @@ func (r retryManifest) Get(dgst digest.Digest) (*schema1.SignedManifest, error) 
 
 // Enumerate returns an array of manifest revisions in repository.
 func (r retryManifest) Enumerate() ([]digest.Digest, error) {
-	for {
-		if d, err := r.ManifestService.Enumerate(); r.repo.shouldRetry(err) {
-			continue
-		} else {
-			return d, err
-		}
+	//for {
+	//if d, err := r.ManifestService.Enumerate(); r.repo.shouldRetry(err) {
+	//	continue
+	//} else {
+	//	return d, err
+	//}
+	//}
+	if r.repo.shouldRetry(distribution.ErrUnsupported) {
+		return nil, nil
+	} else {
+		return nil, distribution.ErrUnsupported
 	}
 }
 
