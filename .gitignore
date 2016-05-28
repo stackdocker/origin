@@ -1,5 +1,6 @@
 /_output
 /_tools
+/apache-maven-*
 /openshift.local.*
 /third-party
 /.project

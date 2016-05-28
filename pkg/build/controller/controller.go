@@ -91,6 +91,7 @@ func (bc *BuildController) HandleBuild(build *buildapi.Build) error {
 
 	// Handle new builds
 	if build.Status.Phase != buildapi.BuildPhaseNew {
+		glog.V(9).Infof("init build status phase: %v", build.Status.Phase)
 		return nil
 	}
 
