@@ -1,6 +1,9 @@
 /_output
 /_tools
 /apache-maven-*
+fedora_virtualbox_inst.box
+go1.6.2.linux-amd64.tar.gz
+vagrant.bak
 /openshift.local.*
 /third-party
 /.project
@@ -24,5 +27,4 @@ origin.iml
 *.go~
 tags
 .envrc
-fedora_virtualbox_inst.box
-vagrant.bak
+
