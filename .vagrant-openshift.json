@@ -1,0 +1,48 @@
+{
+    "dev_cluster"       :  false,
+    "dind_dev_cluster"  :  false,
+    "num_minions"       :  1,
+    "cpus"              :  1,
+    "memory"            :  3072,
+    "skip_build"        :  true,
+    "master_ip"         :  "172.17.4.50",
+    "minion_ip_base"    :  "172.17.4.",
+    "insert_key"        :  false,
+    "private_network_ip":  "172.17.4.50",
+
+    "virtualbox"        :
+        {
+            "box_name"  : "fedora_inst",
+            "box_url"   : "fedora_virtualbox_inst.box"
+        },
+
+    "sync_folders_type" :  null,
+    "sync_folders"      : 
+        {
+            ".":
+              {
+                "to"      : "/data/src/github.com/openshift/origin",
+                "exclude" : null
+              },
+            "../../tangfeixiong/go-to-cloud-1":
+              {
+                "to"      : "/data/src/github.com/tangfeixiong/go-to-cloud-1",
+                "exclude" : null
+              },
+            "/Users/fanhongling/Downloads/workspace/src-openshift-dep/golang.org":
+              {
+                "to"      : "/data/src/golang.org",
+                "exclude" : null
+              },
+            "/Users/fanhongling/Downloads/workspace/src-openshift-dep/google.golang.org":
+              {
+                "to"      : "/data/src/google.golang.org",
+                "exclude" : null
+              },
+            "/Users/fanhongling/Downloads/workspace/src-openshift-dep/speter.net":
+              {
+                "to"      : "/data/src/speter.net",
+                "exclude" : null
+              }
+        }
+}

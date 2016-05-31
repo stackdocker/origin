@@ -17,7 +17,7 @@ vagrant.bak
 /dind-*.rc
 *.swp
 .vimrc
-.vagrant-openshift.json*
+#.vagrant-openshift.json*
 .DS_Store
 .idea
 origin.iml
