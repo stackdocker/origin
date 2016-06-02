@@ -18,10 +18,10 @@ type User struct {
 	FullName string `json:"fullName,omitempty"`
 
 	// Identities are the identities associated with this user
-	Identities []string `json:"identities"`
+	Identities []string `json:"identities,omitempty"`
 
 	// Groups are the groups that this user is a member of
-	Groups []string `json:"groups"`
+	Groups []string `json:"groups,omitempty"`
 }
 
 // UserList is a collection of Users

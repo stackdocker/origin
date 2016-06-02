@@ -7,9 +7,9 @@ import (
 
 // ProjectList is a list of Project objects.
 type ProjectList struct {
-	unversioned.TypeMeta
-	unversioned.ListMeta
-	Items []Project
+	unversioned.TypeMeta `json:",inline"`
+	unversioned.ListMeta `json:"metadata,omitempty"`
+	Items                []Project `json:"items,omitempty"`
 }
 
 const (
@@ -20,28 +20,28 @@ const (
 // ProjectSpec describes the attributes on a Project
 type ProjectSpec struct {
 	// Finalizers is an opaque list of values that must be empty to permanently remove object from storage
-	Finalizers []kapi.FinalizerName
+	Finalizers []kapi.FinalizerName `json:"finalizers,omitempty"`
 }
 
 // ProjectStatus is information about the current status of a Project
 type ProjectStatus struct {
-	Phase kapi.NamespacePhase
+	Phase kapi.NamespacePhase `json:"phase,omitempty"`
 }
 
 // Project is a logical top-level container for a set of origin resources
 type Project struct {
-	unversioned.TypeMeta
-	kapi.ObjectMeta
+	unversioned.TypeMeta `json:",inline"`
+	kapi.ObjectMeta      `json:"metadata,omitempty"`
 
-	Spec   ProjectSpec
-	Status ProjectStatus
+	Spec   ProjectSpec   `json:"spec,omitempty"`
+	Status ProjectStatus `json:"status,omitempty"`
 }
 
 type ProjectRequest struct {
-	unversioned.TypeMeta
-	kapi.ObjectMeta
-	DisplayName string
-	Description string
+	unversioned.TypeMeta `json:",inline"`
+	kapi.ObjectMeta      `json:"metadata,omitempty"`
+	DisplayName          string `json:"displayName,omitempty"`
+	Description          string `json:"description,omitempty"`
 }
 
 // These constants represent annotations keys affixed to projects
