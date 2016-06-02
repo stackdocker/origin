@@ -12,7 +12,8 @@ OUT_DIR = _output
 OUT_PKG_DIR = Godeps/_workspace/pkg
 OS_OUTPUT_GOPATH ?= 1
 
-export GOFLAGS
+OS_GOFLAGS=$(GOFLAGS)
+export OS_GOFLAGS
 export TESTFLAGS
 export OS_OUTPUT_GOPATH
 
