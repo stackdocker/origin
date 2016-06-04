@@ -44,6 +44,7 @@ func init() {
 	if err := enableVersions(externalVersions); err != nil {
 		panic(err)
 	}
+	fmt.Printf("registerd project data object versions: %+v\n", availableVersions)
 }
 
 // TODO: enableVersions should be centralized rather than spread in each API
