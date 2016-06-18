@@ -27,6 +27,7 @@
                             "name": "etcd",
                             "image": "openshift/etcd-20-centos7",
                             "ports": [{"containerPort": 4001, "name": "client"}, {"containerPort": 7001, "name": "server"}],
+                            "imagePullPolicy": "IfNotPresent",
                             "command": ["/usr/local/bin/etcd"],
                             "args": ["--data-dir", "/var/lib/etcd"],
                             "env":

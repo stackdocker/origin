@@ -3,7 +3,7 @@
     "dind_dev_cluster"  :  false,
     "num_minions"       :  1,
     "cpus"              :  1,
-    "memory"            :  3072,
+    "memory"            :  4096,
     "skip_build"        :  true,
     "master_ip"         :  "172.17.4.50",
     "minion_ip_base"    :  "172.17.4.",

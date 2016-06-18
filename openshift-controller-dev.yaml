@@ -21,7 +21,7 @@ spec:
             - start
             - master
             - --config=/data/src/github.com/openshift/origin/openshift.local.config/master/master-config.yaml
-            - --log-flush-frequency=10s
+            - --log-flush-frequency=60s
             - --loglevel=5
             # - --v=5
           image: "tangfeixiong/openshift-origin" # "openshift/origin"
