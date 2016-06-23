@@ -1,0 +1,137 @@
+admissionConfig:
+  pluginConfig: null
+apiLevels:
+- v1beta3
+- v1
+apiVersion: v1
+assetConfig:
+  extensionDevelopment: false
+  extensionScripts: null
+  extensionStylesheets: null
+  extensions: null
+  loggingPublicURL: ""
+  logoutURL: ""
+  masterPublicURL: https://172.17.4.50:30448
+  metricsPublicURL: ""
+  publicURL: https://172.17.4.50:30448/console/
+  servingInfo:
+    bindAddress: 0.0.0.0:8443
+    bindNetwork: tcp4
+    certFile: master.server.crt
+    clientCA: ""
+    keyFile: master.server.key
+    maxRequestsInFlight: 0
+    namedCertificates: null
+    requestTimeoutSeconds: 0
+controllerLeaseTTL: 0
+controllers: '*'
+corsAllowedOrigins:
+- 127.0.0.1
+- 172.17.4.50:30448
+- localhost
+disabledFeatures: null
+dnsConfig:
+  allowRecursiveQueries: false
+  bindAddress: 0.0.0.0:53
+  bindNetwork: tcp4
+etcdClientInfo:
+  ca: ""
+  certFile: ""
+  keyFile: ""
+  urls:
+  - http://10.3.0.16:4001
+etcdConfig: null
+etcdStorageConfig:
+  kubernetesStoragePrefix: kubernetes.io
+  kubernetesStorageVersion: v1
+  openShiftStoragePrefix: openshift.io
+  openShiftStorageVersion: v1
+imageConfig:
+  format: openshift/origin-${component}:${version}
+  latest: false
+imagePolicyConfig:
+  disableScheduledImport: false
+  maxImagesBulkImportedPerRepository: 5
+  maxScheduledImageImportsPerMinute: 60
+  scheduledImageImportMinimumIntervalSeconds: 900
+kind: MasterConfig
+kubeletClientInfo:
+  ca: ""
+  certFile: ""
+  keyFile: ""
+  port: 10250
+kubernetesMasterConfig: null
+masterClients:
+  externalKubernetesKubeConfig: kubeconfig
+  openshiftLoopbackKubeConfig: openshift-master.kubeconfig
+masterPublicURL: https://172.17.4.50:30448
+networkConfig:
+  clusterNetworkCIDR: 172.17.0.0/22
+  externalIPNetworkCIDRs: null
+  hostSubnetLength: 7
+  networkPluginName: ""
+  serviceNetworkCIDR: 10.3.0.0/24
+oauthConfig:
+  alwaysShowProviderSelection: false
+  assetPublicURL: https://172.17.4.50:30448/console/
+  grantConfig:
+    method: auto
+  identityProviders:
+  - challenge: true
+    login: true
+    mappingMethod: claim
+    name: anypassword
+    provider:
+      apiVersion: v1
+      kind: AllowAllPasswordIdentityProvider
+  masterCA: ""
+  masterPublicURL: https://172.17.4.50:30448
+  masterURL: https://172.17.4.50:30448
+  sessionConfig:
+    sessionMaxAgeSeconds: 300
+    sessionName: ssn
+    sessionSecretsFile: ""
+  templates: null
+  tokenConfig:
+    accessTokenMaxAgeSeconds: 86400
+    authorizeTokenMaxAgeSeconds: 300
+pauseControllers: false
+policyConfig:
+  bootstrapPolicyFile: policy.json
+  openshiftInfrastructureNamespace: openshift-infra
+  openshiftSharedResourcesNamespace: openshift
+  userAgentMatchingConfig:
+    defaultRejectionMessage: ""
+    deniedClients: null
+    requiredClients: null
+projectConfig:
+  defaultNodeSelector: ""
+  projectRequestMessage: ""
+  projectRequestTemplate: ""
+  securityAllocator:
+    mcsAllocatorRange: s0:/2
+    mcsLabelsPerProject: 5
+    uidAllocatorRange: 1000000000-1999999999/10000
+routingConfig:
+  subdomain: router.default.svc.cluster.local
+serviceAccountConfig:
+  limitSecretReferences: false
+  managedNames:
+  - builder
+  - deployer
+  masterCA: "ca.crt"
+  privateKeyFile: "serviceaccounts.private.key"
+  publicKeyFiles:
+  - serviceaccounts.public.key
+  - k8s-apiserver.key
+servingInfo:
+  bindAddress: 0.0.0.0:8443
+  bindNetwork: tcp4
+  certFile: master.server.crt
+  clientCA: ca.crt
+  keyFile: master.server.key
+  maxRequestsInFlight: 0
+  namedCertificates: null
+  requestTimeoutSeconds: 3600
+volumeConfig:
+  dynamicProvisioningEnabled: true

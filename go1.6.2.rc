@@ -1,2 +1,4 @@
+# export KUBECONFIG="/data/src/github.com/openshift/origin/openshift.local.config/master/admin.kubeconfig"
+export KUBECONFIG="/data/src/github.com/openshift/origin/kubeconfig"
 export GOROOT=/opt/go
 export PATH=/opt/go/bin:$PATH

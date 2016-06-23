@@ -4,7 +4,8 @@
 fedora_virtualbox_inst.box
 go1.6.2.linux-amd64.tar.gz
 vagrant.bak
-/openshift.local.*
+/openshift.local.etcd
+/openshift.local.volumes
 /third-party
 /.project
 /.vagrant
