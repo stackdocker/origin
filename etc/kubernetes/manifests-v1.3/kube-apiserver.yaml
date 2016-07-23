@@ -7,7 +7,8 @@ spec:
   hostNetwork: true
   containers:
   - name: kube-apiserver
-    image: gcr.io/google_containers/hyperkube-amd64:v1.3.0-alpha.2 # v1.2.4
+    image: gcr.io/google_containers/hyperkube-amd64:v1.4.0-ci # v1.4.0-alpha.1 # v1.3.0-alpha.2 # v1.2.4
+    imagePullPolicy: Never # Always IfNotPresent Never
     command:
     - /hyperkube
     - apiserver
@@ -22,8 +23,8 @@ spec:
     - --tls-private-key-file=/etc/kubernetes/ssl/server.key
     - --client-ca-file=/etc/kubernetes/ssl/ca.crt
     - --service-account-key-file=/etc/kubernetes/ssl/server.key
-    # - --runtime-config=apps/v1alpha1/petsets=true,apps/v1alpha1=true,extensions/v1beta1/deployments=true,extensions/v1beta1/daemonsets=true,extensions/v1beta1/replicasets=true,extensions/v1beta1=true,extensions/v1beta1/thirdpartyresources=true
-    - --runtime-config=extensions/v1beta1/deployments=true,extensions/v1beta1/daemonsets=true,extensions/v1beta1/replicasets=true,extensions/v1beta1=true,extensions/v1beta1/thirdpartyresources=true
+    - --runtime-config=apps/v1alpha1/petsets=true,apps/v1alpha1=true,extensions/v1beta1/deployments=true,extensions/v1beta1/daemonsets=true,extensions/v1beta1/replicasets=true,extensions/v1beta1=true,extensions/v1beta1/thirdpartyresources=true
+    # - --runtime-config=extensions/v1beta1/deployments=true,extensions/v1beta1/daemonsets=true,extensions/v1beta1/replicasets=true,extensions/v1beta1=true,extensions/v1beta1/thirdpartyresources=true
     - --v=2
     ports:
     - containerPort: 443

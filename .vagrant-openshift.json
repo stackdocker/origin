@@ -24,14 +24,14 @@
                 "to"      : "/data/src/github.com/openshift/origin",
                 "exclude" : null
               },
-            "/Users/fanhongling/Downloads/workspace/src/github.com/tangfeixiong/go-to-cloud-1":
+            "/Users/fanhongling/Downloads/workspace/src/github.com":
               {
-                "to"      : "/data/src/github.com/tangfeixiong/go-to-cloud-1",
+                "to"      : "/work/src/github.com",
                 "exclude" : null
               },
-            "/Users/fanhongling/Downloads/workspace/src/github.com/stackdocker/qingyuancloud-caas-sdk":
+            "/Users/fanhongling/Downloads/workspace/src-openshift-dep/github.com":
               {
-                "to"      : "/data/src/github.com/qingyuancloud/soft-primitive-paas",
+                "to"      : "/go/src/github.com",
                 "exclude" : null
               },
             "/Users/fanhongling/Downloads/workspace/src-openshift-dep/golang.org":

@@ -1,3 +1,6 @@
+jre-1_5_0_22-linux-amd64-rpm.bin
+jdk-1_5_0_22-linux-amd64-rpm.bin
+/etc/etcd3.k8s.data
 /_output
 /_tools
 /apache-maven-*
