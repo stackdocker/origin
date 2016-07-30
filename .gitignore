@@ -4,8 +4,10 @@ jdk-1_5_0_22-linux-amd64-rpm.bin
 /_output
 /_tools
 /apache-maven-*
+maven.rc
 fedora_virtualbox_inst.box
 go1.6.2.linux-amd64.tar.gz
+go.rc
 vagrant.bak
 /openshift.local.etcd
 /openshift.local.volumes

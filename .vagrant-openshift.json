@@ -2,8 +2,8 @@
     "dev_cluster"       :  false,
     "dind_dev_cluster"  :  false,
     "num_minions"       :  1,
-    "cpus"              :  1,
-    "memory"            :  4096,
+    "cpus"              :  2,
+    "memory"            :  5120,
     "skip_build"        :  true,
     "master_ip"         :  "172.17.4.50",
     "minion_ip_base"    :  "172.17.4.",
@@ -29,24 +29,9 @@
                 "to"      : "/work/src/github.com",
                 "exclude" : null
               },
-            "/Users/fanhongling/Downloads/workspace/src-openshift-dep/github.com":
+            "/Users/fanhongling/Downloads/workspace/src-openshift-dep":
               {
-                "to"      : "/go/src/github.com",
-                "exclude" : null
-              },
-            "/Users/fanhongling/Downloads/workspace/src-openshift-dep/golang.org":
-              {
-                "to"      : "/data/src/golang.org",
-                "exclude" : null
-              },
-            "/Users/fanhongling/Downloads/workspace/src-openshift-dep/google.golang.org":
-              {
-                "to"      : "/data/src/google.golang.org",
-                "exclude" : null
-              },
-            "/Users/fanhongling/Downloads/workspace/src-openshift-dep/speter.net":
-              {
-                "to"      : "/data/src/speter.net",
+                "to"      : "/go/src",
                 "exclude" : null
               }
         }
